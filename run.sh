@@ -10,7 +10,6 @@ docker run -it \
     -v "${HOME}/.ssh:/home/${USER}/.ssh" \
     -v "${HOME}/.gitconfig:/home/${USER}/.gitconfig" \
     -v "/etc/localtime:/etc/localtime:ro" \
-    -v "/etc/localtime:/etc/localtime:ro" \
     --env=HOST_UID=$(id -u) \
     --env=HOST_GID=$(id -g) \
     --env=USER=${USER} \
