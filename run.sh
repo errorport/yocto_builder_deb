@@ -5,7 +5,7 @@ USER=$(whoami)
 echo "Running Yocto builder image as $USER."
 
 docker run -it \
-    --user 1001 \
+    --user $(id -u) \
     -v $1:/poky \
     -v "${HOME}/.ssh:/home/${USER}/.ssh" \
     -v "${HOME}/.gitconfig:/home/${USER}/.gitconfig" \
