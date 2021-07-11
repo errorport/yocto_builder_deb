@@ -10,11 +10,13 @@ docker run -it \
     -v "${HOME}/.ssh:/home/${USER}/.ssh" \
     -v "${HOME}/.gitconfig:/home/${USER}/.gitconfig" \
     -v "/etc/localtime:/etc/localtime:ro" \
-    --env=HOST_UID=$(id -u) \
-    --env=HOST_GID=$(id -g) \
-    --env=USER=${USER} \
+    -e HOST_UID=$(id -u) \
+    -e HOST_GID=$(id -g) \
+    -e USER=${USER} \
     -v "${HOME}:${HOME}" \
     -v "/tmp:/tmp" \
+    --device /dev/net/tun:/dev/net/tun \
+    -e DISPLAY=$DISPLAY \
     yocto_builder_deb:latest \
     /bin/bash
 
