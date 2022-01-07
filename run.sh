@@ -2,7 +2,7 @@
 
 USER=$(whoami)
 
-echo "Running Yocto builder image as $USER."
+echo "Running Yocto builder image as UID: $(id -u), GID: $(id -g)."
 
 docker run -it \
     --user $(id -u) \
@@ -17,6 +17,7 @@ docker run -it \
     -v "/tmp:/tmp" \
     --device /dev/net/tun:/dev/net/tun \
     -e DISPLAY=$DISPLAY \
+    --net=host \
     yocto_builder_deb:latest \
     /bin/bash
 
