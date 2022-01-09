@@ -3,7 +3,7 @@ FROM debian
 ARG BUILD_USER_UID_ARG
 ARG BUILD_USER_GID_ARG
 
-RUN apt update
+RUN apt update || true
 RUN apt upgrade -y || true
 RUN apt install -y \
 	python3 python3-distutils python3-apt \
@@ -23,9 +23,12 @@ RUN apt install -y \
 	qemu qemu-kvm \
 	qemu-system-arm qemu-system \
 	sudo \
-	uml-utilities \
+	uml-utilities
+RUN apt install -y \
 	zstd \
-	lz4
+	lz4 \
+	bzip2 \
+	file
 
 # Set the locale
 RUN sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && locale-gen
