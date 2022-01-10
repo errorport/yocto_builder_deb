@@ -28,7 +28,9 @@ RUN apt install -y \
 	zstd \
 	lz4 \
 	bzip2 \
-	file
+	file \
+	net-tools iproute2 \
+	vim
 
 # Set the locale
 RUN sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && locale-gen

@@ -18,6 +18,7 @@ docker run -it \
 	--device /dev/net/tun:/dev/net/tun \
 	-e DISPLAY=$DISPLAY \
 	--net=host \
+	--privileged \
 	yocto_builder_deb:latest \
 	/bin/bash
 
